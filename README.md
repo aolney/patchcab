@@ -1,47 +1,43 @@
-# 🎛 Patchcab
+# 🎛 aolney/patchcab
 
 <img src="https://raw.githubusercontent.com/spectrome/patchcab/main/core/public/assets/preview@2x.png" alt="Patchcab" width="600" height="315" />
 
-### Patchcab is a modular Eurorack style synthesizer made with Web Audio.
+## This is a fork of Patchcab
+
+Patchcab is a modular Eurorack style synthesizer made with Web Audio.
 
 Modules are built using [Tone.js Web Audio framework](https://github.com/Tonejs/Tone.js/) and [Svelte Javascript framework](https://github.com/sveltejs/svelte). Patchcab is heavily inspired by [VCV Eurorack Simulator](https://vcvrack.com).
 
----
+See the [original/main repo](https://github.com/spectrome/patchcab) and its corresponding [hosted site](https://patch.cab) to create, share and remix synths with community made modules.
 
-### 🎛 Patch and play
+### Why this fork?
 
-Go to **https://patch.cab** to create, share and remix synths with community made modules.
+This fork adapts and extends patchcab so it can be embedded in a book I'm working on. 
+I expect the UI changes will not be compatible with the original project vision. 
 
----
+## How to set up and build
 
-### 💾 Run locally
-
-Install [Node.js](https://nodejs.org) and the latest version of Patchcab core:
-
-```bash
+```
+git clone https://github.com/aolney/patchcab.git
+cd patchcab
 npm install @patchcab/core
-```
-
-Add some modules:
-
-```bash
 npm install @patchcab/modules
+npm install gh-pages --save-dev
+npm run build
 ```
 
-Start Patchcab:
+:warning: **Never run `npx patchcab` - it will break things badly** :warning:
 
-```bash
-npx patchcab
-```
+## How to deploy
 
-And finally - open the address http://localhost:3000 in your browser 🤘
+See the `deploy` script in the top level `package.json`.
+It is designed to deploy to gh-pages using a custom domain (in my case, olney.ai is the custom domain for aolney.github.io).
+You can adapt the URLs and partial paths to your setup.
 
----
+If you run `npm run deploy`, the scripts will copy relevant files to a new `deploy` directory and then push these to your gh-pages branch.
+GitHub will then serve the pages at `your-username.github.io/your-reponame` or at the custom domain you've set up with subdirectory `your-reponame`.
+In my case that is `olney.ai/patchcab`.
 
-### 🎚 Build modules
+## Run locally for development
 
-- Read the ~~Patchcab documentation~~ (coming soon 🤞)
-- Read the [Tone.js documentation](https://tonejs.github.io/)
-- Browse [Patchcab default modules](https://github.com/spectrome/patchcab/tree/master/modules/src) for basic examples
-- Fork the [Patchcab module template](https://github.com/spectrome/patchcab-module-template)
-- Share your modules on [Patch.cab](https://patch.cab) by making a pull request to [spectrome/patch-dot-cab](https://github.com/spectrome/patch-dot-cab)
+Go to `./core/public`, open a terminal, and run `python3 -m http.server`.
