@@ -4,9 +4,21 @@
   "workspaces": [
     "core",
     "modules"
-  ],
+  ], 
   "scripts": {
+    "deploy":"yarn prepare-deploy && yarn rewrite-module-links && yarn rewrite-core-links && yarn rewrite-index-links && yarn publish-to-ghpages",
+    "prepare-deploy":"rm -rf deploy && cp -r core/public/ deploy",
+    "rewrite-module-links": "find ./deploy/modules/@patchcab-modules -type f -name \"*.js\" -print0 | xargs -0 sed -i 's|from\"/js/core.js|from\"https://olney.ai/patchcab/js/core.js|g'",
+    "rewrite-core-links": "find ./deploy/js -type f -name \"*.js\" -print0 | xargs -0 sed -i 's|/modules|/patchcab/modules|g'",
+    "rewrite-index-links": "find ./deploy -type f -name \"*.html\" -print0 | xargs -0 sed -i  's|/assets/|/patchcab/assets/|g' && find ./deploy -type f -name \"*.html\" -print0 | xargs -0 sed -i  's|/js/core.js|/patchcab/js/core.js|g'",
+    "publish-to-ghpages": "gh-pages -d deploy",
     "build": "yarn --cwd ./core build && yarn --cwd ./core pack --filename patchcab.tgz && yarn --cwd ./modules add ../patchcab.tgz && cpy './modules/public/modules.json' './core/public/' && cpy './modules/public/modules' './core/public/modules/@patchcab-modules'"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@patchcab/core": "^1.1.3",
+    "@patchcab/modules": "^1.1.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }
