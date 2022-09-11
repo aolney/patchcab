@@ -20,6 +20,7 @@ module.exports = () => {
     output: {
       name: 'patchcab',
       format: 'es',
+      sourcemap: true, //enable sourcemaps
       dir: DIR,
       paths: {
         '@patchcab/core': '/js/core.js',
@@ -34,7 +35,8 @@ module.exports = () => {
         emitCss: false,
         preprocess: autoPreprocess(),
       }),
-      typescript(),
+      // typescript(),
+      typescript({ sourceMap: false }), //https://stackoverflow.com/questions/63218218/rollup-is-not-generating-typescript-sourcemap
       DEV &&
         serve({
           open: true,
@@ -46,7 +48,7 @@ module.exports = () => {
           },
         }),
       DEV && livereload(),
-      !DEV && terser(),
+      // !DEV && terser(), //disable minification
     ],
   };
 };

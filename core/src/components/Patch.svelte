@@ -66,7 +66,8 @@
   });
 
   const onPatchClick = (event: MouseEvent | TouchEvent) => {
-    event.preventDefault();
+    // error for touch; passive by default
+    // event.preventDefault();
 
     const $patch = patches.state.find((item) => item.input === patchID || item.output === patchID);
 

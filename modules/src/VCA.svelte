@@ -35,7 +35,7 @@
   });
 </script>
 
-<Faceplate title="VOL" color="var(--color-dark)">
+<Faceplate title="VCA" color="var(--color-dark)">
   <Volume x={24} y={60} h={204} bind:value={state.volume} min={MIN} max={MAX} />
 
   <Patch label="cv" x={40} y={280} name="cv-1" input={scale} {onConnect} />

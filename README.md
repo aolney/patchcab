@@ -36,7 +36,9 @@ You can adapt the URLs and partial paths to your setup.
 
 If you run `npm run deploy`, the scripts will copy relevant files to a new `deploy` directory and then push these to your gh-pages branch.
 GitHub will then serve the pages at `your-username.github.io/your-reponame` or at the custom domain you've set up with subdirectory `your-reponame`.
-In my case that is `olney.ai/patchcab`.
+In my case that is `https://olney.ai/patchcab`.
+
+**Make sure to use the `https` prefix or modules won't appear when add them to the screen.**
 
 ## Run locally for development
 
