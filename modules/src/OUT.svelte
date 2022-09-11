@@ -6,7 +6,7 @@
   const MIN = -80;
   const MAX = 2;
 
-  let volume = MIN;
+  let volume = MAX; //MIN;
   let on = false;
 
   const node = new Gain();
@@ -53,10 +53,11 @@
 <svelte:body on:keydown={onKey} />
 
 <Faceplate title="OUT" color="var(--color-dark)">
-  <Volume x={24} y={60} h={204} bind:value={volume} min={MIN} max={MAX} />
+  <!-- AO: disabling VCA type controls for pedagogical purposes -->
+  <!-- <Volume x={24} y={60} h={204} bind:value={volume} min={MIN} max={MAX} /> -->
 
   <Switch x={40} y={280} bind:value={on} label="on" />
 
-  <Patch label="cv" x={20} y={320} name="cv-1" input={scale} {onConnect} />
+  <!-- <Patch label="cv" x={20} y={320} name="cv-1" input={scale} {onConnect} /> -->
   <Patch label="in" x={60} y={320} name="audio-in" input={node} />
 </Faceplate>
