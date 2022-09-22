@@ -1,5 +1,7 @@
 # 🎛 aolney/patchcab
 
+:warning: **I decided to switch to [DISTRHO/Cardinal](https://github.com/DISTRHO/Cardinal) because it is more feature complete. I'm keeping this repo for future reference in case someone is interested in the build process** :warning:
+
 <img src="https://raw.githubusercontent.com/spectrome/patchcab/main/core/public/assets/preview@2x.png" alt="Patchcab" width="600" height="315" />
 
 ## This is a fork of Patchcab
